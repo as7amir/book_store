@@ -3,13 +3,9 @@
 {% block title %}Home{% endblock title %}
 {% block content %}
     <h1>Homepage</h1>
-    <img class="bookcover" src="{% static 'images/dfp.png' %}">
-    {% if user.is_authenticated %}
-        <p>Hi {{ user.email }}!</p>
-        <p><a href="{% url 'account_logout' %}">Log Out</a></p>
-    {% else %}
-        <p>You are not logged in</p>
-        <p><a href="{% url 'account_login' %}">Log In</a> |
-            <a href="{% url 'account_signup' %}">Sign Up</a></p>
-    {% endif %}
+    <form method="get" action="{% url 'search_results' %}"
+          class="form-inline mt-2 mt-md-0">
+        <input name="q" class="form-control mr-sm-2"
+               placeholder="Search" aria-label="Search">
+    </form>
 {% endblock content %}
